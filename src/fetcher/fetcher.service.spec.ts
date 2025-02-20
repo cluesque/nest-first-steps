@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FetcherService } from './fetcher.service';
+import fetchMock from "jest-fetch-mock";
 
 describe('FetcherService', () => {
   let service: FetcherService;
@@ -36,6 +37,16 @@ describe('FetcherService', () => {
 
     expect(response.status).toBe(200);
     expect(body).toBe('');  
-  }
-  );
+  });
+
+  it('allows disabling the mock', async () => {
+    fetchMock.disableMocks();
+
+    let response = await service.getCat('nope');
+    let body = await response.text();
+
+    // This is not a real page, so should 404, with some html or something
+    expect(response.status).toBe(404);
+    expect(body.length).toBeGreaterThan(10);
+  });
 });
