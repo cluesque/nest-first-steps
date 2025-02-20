@@ -6,8 +6,9 @@ export class FetcherService {
     return 'narf';
   }
 
-  async getCat() {
-    let url = 'https://http.cat/201';
+  async getCat(cat: String) : Promise<Response> {
+    // let url = 'https://http.cat/201';
+    let url = 'https://http.cat/' + cat;
     let response = await fetch(url);
     return response;
   }

@@ -31,8 +31,11 @@ describe('FetcherService', () => {
 
   it('should fetch the cat', async () => {    
     let url = 'https://http.cat/201';
-    let response = await service.getCat();
+    let response = await service.getCat('nope');
+    let body = await response.text();
+
     expect(response.status).toBe(200);
+    expect(body).toBe('');  
   }
   );
 });
