@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsController } from './cats/cats.controller';
 import { RoutesModule } from './commands/routes.module';
+import { FetcherService } from './fetcher/fetcher.service';
 
 @Module({
   imports: [
@@ -11,6 +12,6 @@ import { RoutesModule } from './commands/routes.module';
     RoutesModule
   ],
   controllers: [AppController, CatsController],
-  providers: [AppService],
+  providers: [AppService, FetcherService],
 })
 export class AppModule {}
