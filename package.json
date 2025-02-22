@@ -74,6 +74,7 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
+    "setupFilesAfterEnv": ["<rootDir>/jest/jest.prisma.setup.ts"],
     "testEnvironment": "node"
   }
 }
